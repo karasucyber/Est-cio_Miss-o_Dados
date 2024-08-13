@@ -9,14 +9,14 @@ using CsvHelper.TypeConversion;
 // Classe que representa o registro de dados
 public class DataRecord
 {
-    public string InvoiceNo { get; set; }
-    public string StockCode { get; set; }
-    public string Description { get; set; }
+    public required string InvoiceNo { get; set; }
+    public required string StockCode { get; set; }
+    public required string Description { get; set; }
     public int Quantity { get; set; }
     public DateTime InvoiceDate { get; set; }
     public decimal UnitPrice { get; set; }
     public int CustomerID { get; set; }
-    public string Country { get; set; }
+    public required string Country { get; set; }
 }
 
 // Conversor personalizado para inteiros que trata valores vazios como 0

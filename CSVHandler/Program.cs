@@ -28,6 +28,27 @@ public class IntegerConverter : DefaultTypeConverter
     }
 }
 
+// Conversor personalizado para DateTime que trata valores vazios e formatos inesperados
+public class DateTimeConverter : DefaultTypeConverter
+{
+    private static readonly DateTime DefaultDate = new DateTime(1900, 1, 1);
+
+    public override object ConvertFromString(string text, IReaderRow row, MemberMapData memberMapData)
+    {
+        if (string.IsNullOrWhiteSpace(text))
+        {
+            return DefaultDate;
+        }
+
+        if (DateTime.TryParseExact(text, "yyyyMMdd", CultureInfo.InvariantCulture, DateTimeStyles.None, out var date))
+        {
+            return date;
+        }
+
+        return DefaultDate;
+    }
+}
+
 // Mapeamento simplificado
 public sealed class DataRecordMap : ClassMap<DataRecord>
 {
@@ -37,7 +58,7 @@ public sealed class DataRecordMap : ClassMap<DataRecord>
         Map(m => m.StockCode).Name("StockCode");
         Map(m => m.Description).Name("Description");
         Map(m => m.Quantity).Name("Quantity").TypeConverter<IntegerConverter>();
-        Map(m => m.InvoiceDate).Name("InvoiceDate");
+        Map(m => m.InvoiceDate).Name("InvoiceDate").TypeConverter<DateTimeConverter>();
         Map(m => m.UnitPrice).Name("UnitPrice");
         Map(m => m.CustomerID).Name("CustomerID").TypeConverter<IntegerConverter>();
         Map(m => m.Country).Name("Country");
@@ -60,24 +81,37 @@ public class Program
 
         try
         {
+            if (!File.Exists(filePath))
+            {
+                Console.WriteLine($"Arquivo não encontrado: {filePath}");
+                return;
+            }
+
             using (var reader = new StreamReader(filePath))
             using (var csv = new CsvReader(reader, config))
             {
                 csv.Context.RegisterClassMap<DataRecordMap>();
 
                 var records = csv.GetRecords<DataRecord>().ToList();
-                var first10Records = records.Take(10).ToList();
-                Console.WriteLine("Primeiras 10 linhas:");
-                foreach (var record in first10Records)
+                if (records.Count == 0)
                 {
-                    Console.WriteLine($"InvoiceNo: {record.InvoiceNo}, StockCode: {record.StockCode}, Description: {record.Description}, Quantity: {record.Quantity}, InvoiceDate: {record.InvoiceDate}, UnitPrice: {record.UnitPrice}, CustomerID: {record.CustomerID}, Country: {record.Country}");
+                    Console.WriteLine("Nenhum registro encontrado no arquivo.");
                 }
-
-                var last10Records = records.Skip(Math.Max(0, records.Count - 10)).ToList();
-                Console.WriteLine("\nÚltimas 10 linhas:");
-                foreach (var record in last10Records)
+                else
                 {
-                    Console.WriteLine($"InvoiceNo: {record.InvoiceNo}, StockCode: {record.StockCode}, Description: {record.Description}, Quantity: {record.Quantity}, InvoiceDate: {record.InvoiceDate}, UnitPrice: {record.UnitPrice}, CustomerID: {record.CustomerID}, Country: {record.Country}");
+                    var first10Records = records.Take(10).ToList();
+                    Console.WriteLine("Primeiras 10 linhas:");
+                    foreach (var record in first10Records)
+                    {
+                        Console.WriteLine($"InvoiceNo: {record.InvoiceNo}, StockCode: {record.StockCode}, Description: {record.Description}, Quantity: {record.Quantity}, InvoiceDate: {record.InvoiceDate}, UnitPrice: {record.UnitPrice}, CustomerID: {record.CustomerID}, Country: {record.Country}");
+                    }
+
+                    var last10Records = records.Skip(Math.Max(0, records.Count - 10)).ToList();
+                    Console.WriteLine("\nÚltimas 10 linhas:");
+                    foreach (var record in last10Records)
+                    {
+                        Console.WriteLine($"InvoiceNo: {record.InvoiceNo}, StockCode: {record.StockCode}, Description: {record.Description}, Quantity: {record.Quantity}, InvoiceDate: {record.InvoiceDate}, UnitPrice: {record.UnitPrice}, CustomerID: {record.CustomerID}, Country: {record.Country}");
+                    }
                 }
             }
         }

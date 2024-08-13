@@ -55,7 +55,8 @@ public class Program
             HasHeaderRecord = true
         };
 
-        string filePath = "/home/karasu/Desktop/Est-cio_Miss-o_Dados/Online-Retail.csv"; // Coloque aqui o caminho do seu arquivo
+        // Caminho relativo ao diretório do projeto
+        string filePath = Path.Combine(Directory.GetCurrentDirectory(), "Data", "Online-Retail.csv");
 
         try
         {

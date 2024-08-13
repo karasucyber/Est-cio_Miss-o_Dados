@@ -1,0 +1,17 @@
+/home/karasu/Desktop/Est-cio_Miss-o_Dados/CSVHandler/bin/Debug/net7.0/CSVHandler
+/home/karasu/Desktop/Est-cio_Miss-o_Dados/CSVHandler/bin/Debug/net7.0/CSVHandler.deps.json
+/home/karasu/Desktop/Est-cio_Miss-o_Dados/CSVHandler/bin/Debug/net7.0/CSVHandler.runtimeconfig.json
+/home/karasu/Desktop/Est-cio_Miss-o_Dados/CSVHandler/bin/Debug/net7.0/CSVHandler.dll
+/home/karasu/Desktop/Est-cio_Miss-o_Dados/CSVHandler/bin/Debug/net7.0/CSVHandler.pdb
+/home/karasu/Desktop/Est-cio_Miss-o_Dados/CSVHandler/bin/Debug/net7.0/CsvHelper.dll
+/home/karasu/Desktop/Est-cio_Miss-o_Dados/CSVHandler/obj/Debug/net7.0/CSVHandler.csproj.AssemblyReference.cache
+/home/karasu/Desktop/Est-cio_Miss-o_Dados/CSVHandler/obj/Debug/net7.0/CSVHandler.GeneratedMSBuildEditorConfig.editorconfig
+/home/karasu/Desktop/Est-cio_Miss-o_Dados/CSVHandler/obj/Debug/net7.0/CSVHandler.AssemblyInfoInputs.cache
+/home/karasu/Desktop/Est-cio_Miss-o_Dados/CSVHandler/obj/Debug/net7.0/CSVHandler.AssemblyInfo.cs
+/home/karasu/Desktop/Est-cio_Miss-o_Dados/CSVHandler/obj/Debug/net7.0/CSVHandler.csproj.CoreCompileInputs.cache
+/home/karasu/Desktop/Est-cio_Miss-o_Dados/CSVHandler/obj/Debug/net7.0/CSVHandler.csproj.CopyComplete
+/home/karasu/Desktop/Est-cio_Miss-o_Dados/CSVHandler/obj/Debug/net7.0/CSVHandler.dll
+/home/karasu/Desktop/Est-cio_Miss-o_Dados/CSVHandler/obj/Debug/net7.0/refint/CSVHandler.dll
+/home/karasu/Desktop/Est-cio_Miss-o_Dados/CSVHandler/obj/Debug/net7.0/CSVHandler.pdb
+/home/karasu/Desktop/Est-cio_Miss-o_Dados/CSVHandler/obj/Debug/net7.0/CSVHandler.genruntimeconfig.cache
+/home/karasu/Desktop/Est-cio_Miss-o_Dados/CSVHandler/obj/Debug/net7.0/ref/CSVHandler.dll

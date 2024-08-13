@@ -55,7 +55,7 @@ public class Program
             HasHeaderRecord = true
         };
 
-        string filePath = "/home/karasu/Desktop/Est-cio_Miss-o_Dados/Online-Retail.csv";
+        string filePath = "/home/karasu/Desktop/Est-cio_Miss-o_Dados/Online-Retail.csv"; // Coloque aqui o caminho do seu arquivo
 
         try
         {
